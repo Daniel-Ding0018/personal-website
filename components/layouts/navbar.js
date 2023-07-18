@@ -17,17 +17,22 @@ import {
 
 import { HamburgerIcon } from '@chakra-ui/icons'
 
-const LinkItem = ({ href, path, children }) => {
+const LinkItem = ({ href, path, target, children, ...props }) => {
   const active = path === href
   const inactiveColor = useColorModeValue('gray200', 'whiteAlpha.900')
   return (
     <Link
       as={NextLink}
       href={href}
+      scroll={false}
       p={2}
       bg={active ? 'glassTeal' : undefined}
       color={active ? '#202023' : inactiveColor}
-    ></Link>
+      target={target}
+      {...props}
+    >
+      {children}
+    </Link>
   )
 }
 
@@ -72,6 +77,19 @@ const Navbar = props => {
             Posts
           </LinkItem>
         </Stack>
+
+        <Box flex={1} align="right">
+          <Box ml={2} display={{ base: 'inline-block', md: 'none' }}>
+            <Menu>
+              <MenuButton
+                as={IconButton}
+                icon={<HamburgerIcon />}
+                variant="outline"
+                aria-label="Options"
+              />
+            </Menu>
+          </Box>
+        </Box>
       </Container>
     </Box>
   )
