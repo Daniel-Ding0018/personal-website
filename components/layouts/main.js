@@ -4,7 +4,7 @@ import Navbar from '../layouts/navbar'
 
 const Main = ({ children, router }) => {
   return (
-    <Box as="main" pt={8}>
+    <Box as="main" pt={8} padding={'0'}>
       <Head>
         <meta name="viewport" content="width=device-width, intial-scale=1" />
         <title>Daniel Ding - Homepage</title>
